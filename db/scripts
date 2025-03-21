@@ -1,0 +1,44 @@
+--run cassandra:
+docker run --name cassandra -p 127.0.0.1:9042:9042 -p 127.0.0.1:9160:9160   -d cassandra
+
+--get DC name:
+use system;
+select data_center from local;
+
+
+--cassandra creation DB:
+
+docker exec -it cassandra bash
+
+cqlsh
+
+--creation space with name story_helper_auth:
+CREATE  KEYSPACE IF NOT EXISTS story_helper_auth                
+   WITH REPLICATION = {'class': 'SimpleStrategy', 
+               'replication_factor' : 1};
+
+--verification
+describe keyspace story_helper_auth;  
+
+--choose keyspace
+use story_helper_auth;        
+
+---creation table USER
+create table user
+ (
+  username text,
+  password text,
+  authorities text,
+  PRIMARY KEY(username)
+ ); 
+
+
+INSERT INTO user (username, password, authorities) VALUES 
+  ('admin', '$2a$10$H2QvKTwSyVvE/yA5dH4cquEaXyK9tCgBBZk6FSVH8v3WfD05zUEzK', 'user&admin');
+
+--copy file to docker container
+  docker cp C:\Users\cherk\IdeaProjects\Dashboard_kafka\scripts\data\clients.txt dashboard_kafka-kafka-1:/home/clients.txt
+
+UPDATE story_helper_auth.user
+set authorities = 'ROLE_ADMIN'
+where username = 'admin';

@@ -1,0 +1,116 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="1">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.view (
+            id uuid,
+            name text
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="2">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.style (
+            id uuid,
+            book text,
+            author text
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="3">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.story (
+            id uuid,
+            name text,
+            genres list<uuid>,
+            characters list<uuid>,
+            nodes list<uuid>,
+            style uuid,
+            view uuid,
+            user text
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="4">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.node (
+            id uuid,
+            name text,
+            textt text,
+            flags list<uuid>,
+            textt description,
+            prev list<uuid>,
+            prev list<next>
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="5">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.log (
+            id uuid,
+            action text,
+            user text,
+            date text,
+            tableName text,
+            objectId uuid
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="6">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.genre (
+            id uuid,
+            name text,
+            description text
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="7">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.flag (
+            id uuid,
+            icon text,
+            placeholder text
+            );
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="8">
+
+        <sql>
+            CREATE TABLE IF NOT EXISTS story_helper.character (
+            id uuid,
+            name text,
+            gender text,
+            birthday text,
+            appearance text,
+            features text,
+            characterDescription text,
+            importanceRate int
+            );
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
