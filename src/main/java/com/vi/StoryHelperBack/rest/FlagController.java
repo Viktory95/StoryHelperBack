@@ -32,6 +32,9 @@ public class FlagController {
         if (!tokenIsValid)
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
+        if(entity.getId() == null)
+            entity.setId(UUID.randomUUID());
+
         boolean exists = flagRepository.findById(entity.getId()).isPresent();
         Flag result = flagRepository.save(entity);
 

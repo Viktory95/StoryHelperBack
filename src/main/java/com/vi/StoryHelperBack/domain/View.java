@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-@Table("view")
+@Table("st_view")
 public class View {
     @Id
     @PrimaryKey

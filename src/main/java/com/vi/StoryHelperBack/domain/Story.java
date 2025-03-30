@@ -21,6 +21,7 @@ public class Story {
     private List<UUID> characters;
     private List<UUID> nodes;
     private UUID style;
-    private UUID view;
-    private String user;
+    private UUID stView;
+    private String stUser;
+    private boolean isPublic;
 }

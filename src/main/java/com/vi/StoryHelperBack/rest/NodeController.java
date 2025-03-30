@@ -31,6 +31,9 @@ public class NodeController {
         if (!tokenIsValid)
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
+        if(entity.getId() == null)
+            entity.setId(UUID.randomUUID());
+
         boolean exists = nodeRepository.findById(entity.getId()).isPresent();
         Node result = nodeRepository.save(entity);
 

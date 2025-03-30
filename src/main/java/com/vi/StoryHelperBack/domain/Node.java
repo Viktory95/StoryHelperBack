@@ -20,6 +20,6 @@ public class Node {
     private String textt;
     private List<UUID> flags;
     private String description;
-    private List<UUID> prev;
-    private List<UUID> next;
+    private List<UUID> nPrev;
+    private List<UUID> nNext;
 }

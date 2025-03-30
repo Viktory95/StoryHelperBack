@@ -16,9 +16,9 @@ public class Log {
     @Id
     @PrimaryKey
     private UUID id;
-    private Action action;
-    private String user;
-    private LocalDateTime date;
+    private Action stAction;
+    private String stUser;
+    private LocalDateTime lDate;
     private String tableName;
     private UUID objectId;
 }

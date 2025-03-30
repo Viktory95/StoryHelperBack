@@ -12,33 +12,14 @@ docker exec -it cassandra bash
 
 cqlsh
 
---creation space with name story_helper_auth:
-CREATE  KEYSPACE IF NOT EXISTS story_helper_auth                
+--creation space with name story_helper:
+CREATE  KEYSPACE IF NOT EXISTS story_helper
    WITH REPLICATION = {'class': 'SimpleStrategy', 
                'replication_factor' : 1};
 
 --verification
-describe keyspace story_helper_auth;  
+describe keyspace story_helper;
 
 --choose keyspace
-use story_helper_auth;        
+use story_helper;
 
----creation table USER
-create table user
- (
-  username text,
-  password text,
-  authorities text,
-  PRIMARY KEY(username)
- ); 
-
-
-INSERT INTO user (username, password, authorities) VALUES 
-  ('admin', '$2a$10$H2QvKTwSyVvE/yA5dH4cquEaXyK9tCgBBZk6FSVH8v3WfD05zUEzK', 'user&admin');
-
---copy file to docker container
-  docker cp C:\Users\cherk\IdeaProjects\Dashboard_kafka\scripts\data\clients.txt dashboard_kafka-kafka-1:/home/clients.txt
-
-UPDATE story_helper_auth.user
-set authorities = 'ROLE_ADMIN'
-where username = 'admin';

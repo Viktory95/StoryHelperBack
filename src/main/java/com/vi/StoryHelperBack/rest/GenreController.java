@@ -26,6 +26,9 @@ public class GenreController {
         if (!tokenIsValid)
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
+        if(entity.getId() == null)
+            entity.setId(UUID.randomUUID());
+
         return ResponseEntity.ok(genreRepository.save(entity));
     }
 

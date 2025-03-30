@@ -15,7 +15,7 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 import java.time.Duration;
 
 @Configuration
-@PropertySource(value = { "classpath:application.yml" })
+@PropertySource(value = {"classpath:application.yml"})
 @EnableCassandraRepositories(basePackages = "com.vi.StoryHelperBack.repository")
 public class CassandraConfig extends AbstractCassandraConfiguration {
 
@@ -32,6 +32,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     protected String getContactPoints() {
         return contactPoints;
     }
+
     @Override
     protected String getKeyspaceName() {
         return keySpace;

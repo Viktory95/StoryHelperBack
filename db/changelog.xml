@@ -35,7 +35,8 @@
             nodes list<uuid>,
             style uuid,
             view uuid,
-            user text
+            user text,
+            isPublic boolean
             );
         </sql>
 
@@ -49,7 +50,7 @@
             name text,
             textt text,
             flags list<uuid>,
-            textt description,
+            description text,
             prev list<uuid>,
             prev list<next>
             );
