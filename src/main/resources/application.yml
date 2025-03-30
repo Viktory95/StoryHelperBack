@@ -6,6 +6,13 @@ spring:
       contact-points: 127.0.0.1:9042
       keyspace-name: story_helper
       local-datacenter: datacenter1
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  topics:
+    logs-topic: logs
+    logs-group-id: logs_group_id
 #  liquibase:
 #    enabled: true
 #    url: jdbc:cassandra://127.0.0.1:9042/story_helper?compliancemode=Liquibase&localdatacenter=datacenter1
